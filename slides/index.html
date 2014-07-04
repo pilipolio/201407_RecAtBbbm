@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=1024, user-scalable=no">
+
+  <title> Recommendations at BBM </title>
+
+  <!-- Required stylesheet -->
+  <link rel="stylesheet" media="screen" href="core/deck.core.css">
+
+  <!-- Extension CSS files go here. Remove or add as needed. -->
+  <link rel="stylesheet" media="screen" href="extensions/goto/deck.goto.css">
+  <link rel="stylesheet" media="screen" href="extensions/menu/deck.menu.css">
+  <link rel="stylesheet" media="screen" href="extensions/navigation/deck.navigation.css">
+  <link rel="stylesheet" media="screen" href="extensions/status/deck.status.css">
+  <link rel="stylesheet" media="screen" href="extensions/scale/deck.scale.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script type="text/javascript"
+            src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+  <!-- Style theme. More available in /themes/style/ or create your own. -->
+  <link rel="stylesheet" media="screen" href="themes/style/web-2.0.css">
+
+  <!-- Transition theme. More available in /themes/transition/ or create your own. -->
+  <link rel="stylesheet" media="screen" href="themes/transition/horizontal-slide.css">
+
+  <!-- Basic black and white print styles -->
+  <link rel="stylesheet" media="print" href="core/print.css">
+
+  <!-- Required Modernizr file -->
+  <script src="modernizr.custom.js"></script>
+
+</head>
+<body>
+  <div class="deck-container">
+
+    <!-- Begin slides. Just make elements with a class of slide. -->
+
+    <section class="slide">
+      <h1> Recommendations at BBM </h1>
+    </section>
+
+    <section class="slide">
+        <h2> Outline of the talk </h2>
+         <h3> Introduction to recommendation systems </h3>
+          <ul>
+            <li> Sub-branch of Machine Learning </li>
+            <li> Specificities and challenges </li>
+            <li> Popular approaches : Neighbourhood and matrix factorization </li>
+          </ul>
+
+        <h3> Down in the trenches </h3>
+        <ul>
+            <li> Modelling BBM users feedback </li>
+            <li> Applying neighbourhood methods </li>
+            <li> Off-line and on-line results </li>
+        </ul>
+
+        <h3> Next steps </h3>
+        <ul>
+            <li> Refining on-line measures </li>
+            <li> Adding more explanatory variables : time factor, meta-data, likes, full-plays and skips... </li>
+            <li> Engineering : on-line updates, scalability </li>
+        </ul>
+
+    </section>
+
+      <section class="slide">
+          <h2> Quick recap about Machine learning </h2>
+
+          <h3> Or whatever you call it </h3>
+          <ul>
+              <li> pattern recognition, data-mining, statistical learning, knowledge discovery, ... </li>
+          </ul>
+
+          <h3> "Generalizing an unknown function from a finite number of samples" </h3>
+          <table>
+              <tr>
+                  <td style="width:800px">
+                      <h3> In practise </h3>
+                      <ul>
+                          <li> From $n$ data samples $ (x_i, y_i)_{i=1, \ldots, n}$ </li>
+                          <li> Choose a model $f (x) = \beta_0 + \beta_1 x + \ldots + \beta_p x^p $</li>
+                          <li> Choose a loss function $E(f) = E(\mathbf{\beta}) = \sum_i (y_i - f(x_i))^2 $</li>
+                          <li> Optimize the model's parameter to minimize $E(f)$ </li>
+                          <li> Validate the parameter generalize well by calculating $E(f)$ on test/unseen samples </li>
+                      </ul>
+                  </td>
+                  <td style="width:800px" align="center">
+                      <img src="images/OverFitting.png" height="75%" width="75%">
+                  </td>
+              </tr>
+          </table>
+      </section>
+
+      <section class="slide">
+          <h2> Specificities of recommendation systems </h2>
+
+          <h3> Providing users with personalized suggestions of items </h3>
+          <ul>
+              <li> Operational driven metrics : click through or purchase rates, retention, ...  </li>
+              <li> Netflix prize : predict movies ratings </li>
+          </ul>
+
+          <table>
+              <tr>
+                  <td style="width:800px">
+                      <h3> Link with machine learning </h3>
+                      <ul>
+                          <li> Target : rating or feedback $R_{u,i}$ of user $u$ for item $i$  </li>
+                          <li> Explanatory variables : past interactions, meta-data </li>
+                      </ul>
+
+                      <h3> Challenges </h3>
+                      <ul>
+                          <li> How to compare fundamentally different objects? </li>
+                          <li> Cannot build a predictor for every user/item pair  </li>
+                          <li> Explicit (ratings, likes) and implicit feed-backs (clicks, skips, ...) </li>
+                      </ul>
+
+                  </td>
+                  <td style="width:800px" align="center">
+                      <img src="http://blog.lib.umn.edu/elsay004/myblog/assets_c/2013/12/uiratings-thumb-300x282-181759.png" height="50%" width="50%">
+                  </td>
+              </tr>
+          </table>
+      </section>
+
+      <section class="slide">
+          <h2> Neighborhood methods applied to station recommendations </h2>
+
+          <h3> What is the feedback of a user towards a station? </h3>
+          <ul>
+              <li> Started by search, started from the featuring page or through recommendations </li>
+              <li> Netflix prize : predict movies ratings </li>
+          </ul>
+
+          <table>
+              <tr>
+                  <td style="width:800px">
+                      <h3> Link with machine learning </h3>
+                      <ul>
+                          <li> Target : rating or feedback $R_{u,i}$ of user $u$ for item $i$  </li>
+                          <li> Explanatory variables : past interactions, meta-data </li>
+                      </ul>
+
+                      <h3> Challenges </h3>
+                      <ul>
+                          <li> How to compare fundamentally different objects? </li>
+                          <li> Cannot build a predictor for every user/item pair  </li>
+                          <li> Explicit (ratings, likes) and implicit feed-backs (clicks, skips, ...) </li>
+                      </ul>
+
+                  </td>
+                  <td style="width:800px" align="center">
+                      <img src="http://blog.lib.umn.edu/elsay004/myblog/assets_c/2013/12/uiratings-thumb-300x282-181759.png" height="50%" width="50%">
+                  </td>
+              </tr>
+          </table>
+      </section>
+
+      <!-- End slides. -->
+
+    <!-- Begin extension snippets. Add or remove as needed. -->
+
+    <!-- deck.navigation snippet -->
+    <div aria-role="navigation">
+      <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+      <a href="#" class="deck-next-link" title="Next">&#8594;</a>
+    </div>
+
+    <!-- deck.status snippet -->
+    <p class="deck-status" aria-role="status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
+
+    <!-- deck.goto snippet -->
+    <form action="." method="get" class="goto-form">
+      <label for="goto-slide">Go to slide:</label>
+      <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+      <datalist id="goto-datalist"></datalist>
+      <input type="submit" value="Go">
+    </form>
+
+    <!-- End extension snippets. -->
+  </div>
+
+<!-- Required JS files. -->
+<script src="jquery.min.js"></script>
+<script src="core/deck.core.js"></script>
+
+<!-- Extension JS files. Add or remove as needed. -->
+<script src="extensions/menu/deck.menu.js"></script>
+<script src="extensions/goto/deck.goto.js"></script>
+<script src="extensions/status/deck.status.js"></script>
+<script src="extensions/navigation/deck.navigation.js"></script>
+<script src="extensions/scale/deck.scale.js"></script>
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+  $(function() {
+    $.deck('.slide');
+  });
+</script>
+</body>
+</html>
