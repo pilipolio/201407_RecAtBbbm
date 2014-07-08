@@ -122,8 +122,9 @@
       <section class="slide">
           <h2> Specificities of recommendation systems </h2>
 
-          <h3> Providing users with personalized suggestions of items </h3>
+          <h3> Providing users with product suggestions </h3>
           <ul>
+              <li> Personalized and/or contextualized </li>
               <li> Operational driven metrics : click through or purchase rates, retention, ...  </li>
               <li> Netflix prize : predict movies ratings </li>
           </ul>
@@ -133,7 +134,8 @@
                   <td style="width:800px">
                       <h3> Link with machine learning </h3>
                       <ul>
-                          <li> Target : rating or feedback $R_{u,i}$ of user $u$ for item $i$  </li>
+                          <li> Predict ranked lists of items </li>
+                          <li> Often reduced to predict rating or feedback $R_{u,i}$ of user $u$ for item $i$  </li>
                           <li> Explanatory variables : past interactions, meta-data </li>
                       </ul>
 
@@ -146,7 +148,7 @@
 
                   </td>
                   <td style="width:800px" align="center">
-                      <img src="http://blog.lib.umn.edu/elsay004/myblog/assets_c/2013/12/uiratings-thumb-300x282-181759.png" height="50%" width="50%">
+                      <img src="images/AmazonCustomersWhoBoughtThisItems.JPG" height="100%" width="100%">
                   </td>
               </tr>
           </table>
@@ -157,7 +159,7 @@
           <h3> What is the feedback of a user towards a station? </h3>
           <ul>
               <li> Started from search/featuring page/recommendations </li>
-              <li> Played long enough </li>
+              <li> Recurrently played and for long sessions </li>
               <li> High full plays ratio </li>
               <li> TODO : descriptive analysis </li>
           </ul>
@@ -175,25 +177,23 @@
 
         <table>
             <tr>
-                <td style="width:800px">
-                    <h3> Very simplified set-up </h3>
-                    <ul>
-                        <li> Every user $u$ as a bag of history items $R(u)$ </li>
-                        <li> Only consider pairwise similarities </li>
-                    </ul>
+               <td style="width:800px">
+                  <h3> Simplifying assumptions </h3>
+                  <ul>
+                      <li> Only consider similarities between pair of items $i$ and $j$ </li>
+                      <li> Prediction for user $u$ from the mixture of items previously interacted $R(u)$ </li>
+                      $$\sum_j 1\!\!1_{ j \in R(u) } S_{j,i}$$
+                  </ul>
 
-                    <h3> $S_{i,j}$ the similarity between $i$ and $j$ </h3>
-                    <ul>
-                        <li> Number of co-occurences : $S_{i,j} = | i \cap j | $</li>
-                        <li> Normalized by $i$ and $j$ popularities : $S_{i,j} = \frac{| i \cap j |}{|i| |j|} $</li>
-                        <li> $| i \cap j | = \sum_u R_{u,i} R_{u,j} = \langle R_{\cdot,i}, R_{\cdot,j} \rangle $ </li>
+                  <h3> How to calculate similarities $S_{i,j}$? </h3>
+                  <ul>
+                      <li> Number of co-occurences : $S_{i,j} = | i \cap j | $</li>
+                      <li> Normalized by $i$ and $j$ popularities : $S_{i,j} = \frac{| i \cap j |}{|i| |j|} $</li>
+                      <li> $| i \cap j | = \sum_u R_{u,i} R_{u,j} = \langle R_{\cdot,i}, R_{\cdot,j} \rangle $ </li>
+                      
+                  </ul>
 
-                    </ul>
-
-                    <h3> Predict items $j$ with highest for user $u$ </h3>
-                    $$\sum_i 1\!\!1_{ i \in R(u) } S_{i,j}$$
-
-                </td>
+              </td>
 
                 <td style="width:800px" align="center">
 
@@ -240,27 +240,25 @@
     </section>
 
     <section class="slide">
-          <h2> Neighborhood methods </h2>
+          <h2> Neighbourhood methods </h2>
 
           <table>
               <tr>
                   <td style="width:800px">
-                      <h3> Very simplified set-up </h3>
+                      <h3> Simplifying assumptions </h3>
                       <ul>
-                          <li> Every user $u$ as a bag of history items $R(u)$ </li>
-                          <li> Only consider pairwise similarities </li>
+                          <li> Only consider similarities between pair of items $i$ and $j$ </li>
+                          <li> Prediction for user $u$ from the mixture of items previously interacted $R(u)$ </li>
+                          $$\sum_j 1\!\!1_{ j \in R(u) } S_{j,i}$$
                       </ul>
 
-                      <h3> $S_{i,j}$ the similarity between $i$ and $j$ </h3>
+                      <h3> How to calculate similarities $S_{i,j}$? </h3>
                       <ul>
                           <li> Number of co-occurences : $S_{i,j} = | i \cap j | $</li>
                           <li> Normalized by $i$ and $j$ popularities : $S_{i,j} = \frac{| i \cap j |}{|i| |j|} $</li>
                           <li> $| i \cap j | = \sum_u R_{u,i} R_{u,j} = \langle R_{\cdot,i}, R_{\cdot,j} \rangle $ </li>
                           
                       </ul>
-
-                      <h3> Predict items $j$ with highest for user $u$ </h3>
-                      $$\sum_i 1\!\!1_{ i \in R(u) } S_{i,j}$$
 
                   </td>
 
@@ -327,25 +325,23 @@
 
         <table>
             <tr>
-                <td style="width:800px">
-                    <h3> Very simplified set-up </h3>
-                    <ul>
-                        <li> Every user $u$ as a bag of history items $R(u)$ </li>
-                        <li> Only consider pairwise similarities </li>
-                    </ul>
+              <td style="width:800px">
+                  <h3> Simplifying assumptions </h3>
+                  <ul>
+                      <li> Only consider similarities between pair of items $i$ and $j$ </li>
+                      <li> Prediction for user $u$ from the mixture of items previously interacted $R(u)$ </li>
+                      $$\sum_j 1\!\!1_{ j \in R(u) } S_{j,i}$$
+                  </ul>
 
-                    <h3> $S_{i,j}$ the similarity between $i$ and $j$ </h3>
-                    <ul>
-                        <li> Number of co-occurences : $S_{i,j} = | i \cap j | $</li>
-                        <li> Normalized by $i$ and $j$ popularities : $S_{i,j} = \frac{| i \cap j |}{|i| |j|} $</li>
-                        <li> $| i \cap j | = \sum_u R_{u,i} R_{u,j} = \langle R_{\cdot,i}, R_{\cdot,j} \rangle $ </li>
+                  <h3> How to calculate similarities $S_{i,j}$? </h3>
+                  <ul>
+                      <li> Number of co-occurences : $S_{i,j} = | i \cap j | $</li>
+                      <li> Normalized by $i$ and $j$ popularities : $S_{i,j} = \frac{| i \cap j |}{|i| |j|} $</li>
+                      <li> $| i \cap j | = \sum_u R_{u,i} R_{u,j} = \langle R_{\cdot,i}, R_{\cdot,j} \rangle $ </li>
+                      
+                  </ul>
 
-                    </ul>
-
-                    <h3> Predict items $j$ with highest for user $u$ </h3>
-                    $$\sum_i 1\!\!1_{ i \in R(u) } S_{i,j}$$
-
-                </td>
+              </td>
 
                 <td style="width:800px" align="center">
 
@@ -406,16 +402,16 @@
 
     <section class="slide">
       <h2> Off-line parameters tuning  </h2>
-          <h3> Parameters reducing noise by filtering out </h3>
+          <h3> Separating the signal from the noise </h3>
           <ul>
               <li> users/items with respecitvely too few items/users </li>
-              <li> with too few listening users </li>
               <li> interactions with to low consumption </li>
               <li> similarities with to few co-occurences </li>
           </ul>
           <h3> Optimized on a test data set </h3>
           <ul>
-              <li> looking at recall and coverage </li>
+              <li> Matching our predictions against a virtual future </li>
+              <li> Measuring accuracy and diversity </li>
           </ul>
           <h3> Off-line criterium driven by :</h3>
           <ul>
@@ -454,9 +450,29 @@
       </tr>
   </table>
   </section>
-    
+
     <section class="slide">
-      <h2> Next steps : music recommendations </h2>
+      <h2> How did we get there? </h2>
+
+      <h3> Grokking our data and sorting out unknown unknowns </h3>
+      <ul>
+          <li> Rapid experiments rather than scalability first </li>
+          <li> A few data heavy pre-processing jobs on hadoop/hive </li>
+          <li> But most of the logic operated in memory (pandas, numpy and scipy) </li>
+      </ul>
+
+      <h3> Extending the existing code </h3>
+      <ul>
+          <li> Serving front-end : recommendations </li>
+          <li> Modelling and learning back-end (batch and on-line update) : datamining </li>
+          <li> A few data heavy pre-processing jobs on hadoop/hive/data warehouse </li>
+          <li> But most of the logic operated in memory (pandas, numpy and scipy) </li>
+      </ul>
+
+      </section>
+  
+    <section class="slide">
+      <h2> Next steps : music recommendation </h2>
 
       <h3> Ultimately, playlists generation </h3>
       <ul>
@@ -484,29 +500,9 @@
       </ul>
       
     </section>
-
-    <section class="slide">
-      <h2> A word on the engineering </h2>
-
-      <h3> Grokking our data and sorting out unknown unknowns </h3>
-      <ul>
-          <li> Rapid experiments rather than scalability first </li>
-          <li> Predicting models fully generic  </li>
-          <li> Loading data-set in memory (pandas, numpy and scipy) </li>
-          <li> A few data heavy pre-processing jobs on hadoop/hive </li>
-      </ul>
-
-      <h3> Two tier architecture </h3>
-      <ul>
-          <li> Modelling and learning back-end (batch and on-line update) : datamining </li>
-          <li> Serving front-end : recommendations </li>
-      </ul>
-
-      </section>
       
     <section class="slide">
           <h2> Bibliography and links</h2>
-            <h3> Articles </h3>
               <ul>
                   <li> <a href="http://www-users.cs.umn.edu/~sarwar/sdm.pdf"> Item-based Collaborative Filtering Recommendation Algorithms </a></li>
 
@@ -516,11 +512,9 @@
 
                   <li> <a href="http://techblog.netflix.com/2012/06/netflix-recommendations-beyond-5-stars.html"> Netflix Recommendations: Beyond the 5 stars </a></li>
 
+                  <li> <a href="http://www.slideshare.net/kerveros99/learning-to-rank-for-recommender-system-tutorial-acm-recsys-2013">Learning how to rank </a></li>
+                  
                   </ul>
-            <h3> Tools </h3>
-              <ul>
-                  <li> <a href="http://blog.operasolutions.com/bid/387700/Data-Science-Recommender-Engines-with-Collaborative-Filtering">Collaborative Filtering with Apache Mahout</a></li>
-              </ul>
 
     </section>
     
