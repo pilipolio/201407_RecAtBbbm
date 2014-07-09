@@ -116,8 +116,8 @@
                       </ul>
                   </td>
                   <td style="width:800px" align="center">
-                      <img src="images/ml_regression_f.png" height="75%" width="75%">
-                      <img src="images/ml_regression_fhat.png" height="75%" width="75%">
+                      <img src="images/ML_regression_f.png" height="75%" width="75%">
+                      <img src="images/ML_regression_fhat.png" height="75%" width="75%">
                   </td>
               </tr>
           </table>
@@ -202,7 +202,7 @@
     </section>
 
     <section class="slide">
-          <h2> The co-occurences matrix </h2>
+          <h2> The co-occurrences matrix </h2>
 
           <h3> $$| i \cap j | = \sum_u R_{u,i} R_{u,j} = \langle R_{\cdot,i}, R_{\cdot,j} \rangle $$ </h3>
           
@@ -252,40 +252,11 @@
                   <td style="width:100px"/>
                   <td style="width:800px; vertical-align:middle" align="right">
 
-                      <style>
-                          .coocurences tbody tr:nth-child(1) td:nth-child(2) { background-color: #000000; }
-                          .coocurences tbody tr:nth-child(2) td:nth-child(3) { background-color: #000000; }
-                          .coocurences tbody tr:nth-child(3) td:nth-child(4) { background-color: #000000; }
-                          .coocurences tbody tr:nth-child(4) td:nth-child(5) { background-color: #000000; }
-                          .coocurences tbody tr:nth-child(5) td:nth-child(6) { background-color: #000000; }
-                          .coocurences tbody tr:nth-child(6) td:nth-child(7) { background-color: #000000; }
-                          .coocurences tbody tr:nth-child(7) td:nth-child(8) { background-color: #000000; }
-                          .coocurences tbody tr:nth-child(8) td:nth-child(9) { background-color: #000000; }
-                          .coocurences tbody tr:nth-child(9) td:nth-child(10) { background-color: #000000; }
-                          .coocurences tbody tr:nth-child(1) td:nth-child(5) { background-color: DodgerBlue; }
-                          .coocurences tbody tr:nth-child(1) td:nth-child(2) { background-color: DodgerBlue; }
-                          .coocurences tbody tr:nth-child(2) td:nth-child(8) { background-color: DodgerBlue; }
-                          .coocurences tbody tr:nth-child(2) td:nth-child(3) { background-color: DodgerBlue; }
-                          .coocurences tbody tr:nth-child(3) td:nth-child(7) { background-color: DodgerBlue; }
-                          .coocurences tbody tr:nth-child(3) td:nth-child(4) { background-color: DodgerBlue; }
-                          .coocurences tbody tr:nth-child(4) td:nth-child(2) { background-color: DodgerBlue; }
-                          .coocurences tbody tr:nth-child(4) td:nth-child(5) { background-color: DodgerBlue; }
-                          .coocurences tbody tr:nth-child(5) td:nth-child(7) { background-color: DodgerBlue; }
-                          .coocurences tbody tr:nth-child(5) td:nth-child(6) { background-color: DodgerBlue; }
-                          .coocurences tbody tr:nth-child(6) td:nth-child(8) { background-color: DodgerBlue; }
-                          .coocurences tbody tr:nth-child(6) td:nth-child(7) { background-color: DodgerBlue; }
-                          .coocurences tbody tr:nth-child(7) td:nth-child(7) { background-color: DodgerBlue; }
-                          .coocurences tbody tr:nth-child(7) td:nth-child(8) { background-color: DodgerBlue; }
-                          .coocurences tbody tr:nth-child(8) td:nth-child(7) { background-color: DodgerBlue; }
-                          .coocurences tbody tr:nth-child(8) td:nth-child(9) { background-color: DodgerBlue; }
-                          .coocurences tbody tr:nth-child(9) td:nth-child(8) { background-color: DodgerBlue; }
-                          .coocurences tbody tr:nth-child(9) td:nth-child(10) { background-color: DodgerBlue; }
-                      </style>
                       <table id="cooc" border="1" class="dataframe coocurences">
                           <thead>
                           <tr style="text-align: right;">
-                              <th>STATION</th><th>Avicii</th><th>Calvin Harris</th><th>Chrissie Hynde</th><th>David Guetta</th><th>Elvis Presley</th><th>Father's Day</th><th>Football Anthems</th><th>Kasabian</th><th>Mr. Probz</th>
-                          </tr><tr><th>STATION</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
+                              <th>TO</th><th>Avicii</th><th>Calvin Harris</th><th>Chrissie Hynde</th><th>David Guetta</th><th>Elvis Presley</th><th>Father's Day</th><th>Football Anthems</th><th>Kasabian</th><th>Mr. Probz</th>
+                          </tr><tr><th>FROM</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
                           </tr>
                           </thead>
                           <tbody>
@@ -356,7 +327,7 @@
     <section class="slide">
         <h2> Fighting the popularity </h2>
 
-        <h3> 100 stations represent 80% of the traffic </h3>
+        <h3> ~ 100 stations represent 80% of the traffic </h3>
         <table>
             <tr>
               <td style="width:800px" align="center">
@@ -416,8 +387,8 @@
                     <table border="1" class="dataframe lift">
                         <thead>
                         <tr style="text-align: right;">
-                            <th>STATION</th><th>Avicii</th><th>Calvin Harris</th><th>Chrissie Hynde</th><th>David Guetta</th><th>Elvis Presley</th><th>Father's Day</th><th>Football Anthems</th><th>Kasabian</th><th>Mr. Probz</th>
-                        </tr><tr><th>STATION</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
+                            <th>TO</th><th>Avicii</th><th>Calvin Harris</th><th>Chrissie Hynde</th><th>David Guetta</th><th>Elvis Presley</th><th>Father's Day</th><th>Football Anthems</th><th>Kasabian</th><th>Mr. Probz</th>
+                        </tr><tr><th>FROM</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -443,16 +414,16 @@
       <h2> Off-line parameters tuning  </h2>
           <h3> Separating the signal from the noise </h3>
           <ul>
-              <li> users/items with respecitvely too few items/users </li>
+              <li> users/items with respectively too few items/users </li>
               <li> interactions with to low consumption </li>
-              <li> similarities with to few co-occurences </li>
+              <li> similarities with to few co-occurrences </li>
           </ul>
           <h3> Optimized on a test data set </h3>
           <ul>
               <li> Matching our predictions against a virtual future </li>
               <li> Measuring accuracy and diversity </li>
           </ul>
-          <h3> Off-line criterium driven by :</h3>
+          <h3> Off-line accuracy driven by :</h3>
           <ul>
               <li> strong popularity/exposition bias $\Rightarrow$ Pop-discounted recall where $w_i = 1 ^{- p_i}$ </li>
               <li> recurrent consumption of items $\Rightarrow$ Remove already seen items from test set </li>
@@ -467,18 +438,20 @@
       <td style="width:800px">
       <h3> Different possible products </h3>
       <ul>
-          <li> Personalized stations suggestions (CRM) </li>
-          <li> 'Stations you might like' </li>
+          <li> Personalized stations suggestions </li>
+          <li> Within station suggestions </li>
       </ul>
-      <h3> Based on the currently played station only </h3>
+
+      <h3> Based solely on the currently played station </h3>
       <ul>
           <li> Perfectly suited for our neighborhood model! </li>
+          <li> Captures genres, layout... and usage patterns </li>
       </ul>
+
       <h3> On-line evaluation  </h3>
       <ul>
-          <li> Click Through Rate </li>
-          <li> And checking that user do not bail out straight after </li>
           <li> A/B test against the legacy implementation </li>
+          <li> Click Through Rate </li>
       </ul>
 
       </td>
@@ -491,25 +464,13 @@
   </section>
 
     <section class="slide">
-      <h2> How did we get there? </h2>
+        <h2> The off-line / on-line testing methodology </h2>
 
-      <h3> Grokking our data and sorting out unknown unknowns </h3>
-      <ul>
-          <li> Rapid experiments rather than scalability first </li>
-          <li> A few data heavy pre-processing jobs on hadoop/hive </li>
-          <li> But most of the logic operated in memory (pandas, numpy and scipy) </li>
-      </ul>
+        <img src="images/Offline-online-testing_diagram.png" height="80%" width="80%">
+        <h3> From a Netflix <a href="http://techblog.netflix.com/2012/06/netflix-recommendations-beyond-5-stars.html"> blog post </a> </h3>
 
-      <h3> Extending the existing code </h3>
-      <ul>
-          <li> Serving front-end : recommendations </li>
-          <li> Modelling and learning back-end (batch and on-line update) : datamining </li>
-          <li> A few data heavy pre-processing jobs on hadoop/hive/data warehouse </li>
-          <li> But most of the logic operated in memory (pandas, numpy and scipy) </li>
-      </ul>
+    </section>
 
-      </section>
-  
     <section class="slide">
       <h2> Next steps : music recommendation </h2>
 
@@ -527,7 +488,7 @@
 
       <h3> Personalizing the artist selection step within an artist station </h3>
       <ul>
-          <li> Based on (explicit) likes/dislikes and (implicit) skips </li>
+          <li> Based on likes/dislikes </li>
           <li> Using neighborhood method but also introducing more delicate models. </li>
       </ul>
 
@@ -560,8 +521,25 @@
         </table>
     </section>
 
+    <section class="slide">
+        <h2> How did we get there? </h2>
 
+        <h3> Grokking our data and sorting out unknown unknowns </h3>
+        <ul>
+            <li> Rapid experiments rather than scalability first </li>
+            <li> A few data heavy pre-processing jobs on hadoop/hive on top of the events-warehouse </li>
+            <li> But most of the logic operated in memory (pandas, numpy and scipy) </li>
+        </ul>
 
+        <h3> Extending the existing code </h3>
+        <ul>
+            <li> Serving front-end : recommendations </li>
+            <li> Modelling and learning back-end (batch and on-line update) : datamining </li>
+            <li> A few data heavy pre-processing jobs on hadoop/hive/data warehouse </li>
+            <li> But most of the logic operated in memory (pandas, numpy and scipy) </li>
+        </ul>
+
+    </section>
 
     <section class="slide">
           <h2> Bibliography and links</h2>
