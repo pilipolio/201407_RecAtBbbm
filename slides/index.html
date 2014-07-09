@@ -97,15 +97,15 @@
       <section class="slide">
           <h2> Quick recap about Machine learning </h2>
 
-          <h3> Or whatever you call it </h3>
-          <ul>
-              <li> pattern recognition, data-mining, statistical learning, knowledge discovery, ... </li>
-          </ul>
-
-          <h3> Infer an unknown structure from a finite number of samples </h3>
           <table>
               <tr>
                   <td style="width:800px">
+                      <h3> Or whatever you call it </h3>
+                      <ul>
+                          <li> pattern recognition, data-mining, statistical learning, knowledge discovery, ... </li>
+                      </ul>
+
+                      <h3> Infer an unknown structure from a finite number of samples </h3>
                       <h3> In practise </h3>
                       <ul>
                           <li> From $n$ data samples $ (x_i, y_i)_{i=1, \ldots, n}$ </li>
@@ -116,7 +116,8 @@
                       </ul>
                   </td>
                   <td style="width:800px" align="center">
-                      <img src="images/OverFitting.png" height="75%" width="75%">
+                      <img src="images/ml_regression_f.png" height="75%" width="75%">
+                      <img src="images/ml_regression_fhat.png" height="75%" width="75%">
                   </td>
               </tr>
           </table>
@@ -138,8 +139,8 @@
                       <h3> Link with machine learning </h3>
                       <ul>
                           <li> Predict ranked lists of items </li>
-                          <li> Often reduced to predict rating or feedback $R_{u,i}$ of user $u$ for item $i$  </li>
                           <li> Explanatory variables : past interactions, meta-data </li>
+                          <li> Often reduced to predict 'rating' $R_{u,i}$ of user $u$ for item $i$  </li>
                       </ul>
 
                       <h3> Challenges </h3>
@@ -160,78 +161,54 @@
     <section class="slide">
         <h2> Station recommendations </h2>
 
-        <table>
-            <tr>
-                <td style="width:800px">
-                    <h3> User's feedback towards a station? </h3>
-                    <ul>
-                        <li> Started from search/featuring page/recommendations </li>
-                        <li> Recurrently played and for long sessions </li>
-                        <li> High full plays ratio </li>
-                    </ul>
+            <h3> User's feedback towards a station? </h3>
+            <ul>
+                <li> Started from search/featuring page/recommendations </li>
+                <li> Recurrently played and for long sessions </li>
+                <li> High full plays ratio </li>
+            </ul>
 
-                    <h3> Strong association between two stations ? </h3>
-                    <ul>
-                        <li> Played by the same user </li>
-                        <li> Within a short period of time </li>
-                        <li> Both having positive feedbacks </li>
-                    </ul>
+            <h3> Strong association between two stations ? </h3>
+            <ul>
+                <li> Played by the same user </li>
+                <li> Within a short period of time </li>
+                <li> Both having positive feedbacks </li>
+            </ul>
 
-                </td>
-                <td style="width:800px" align="center">
-                    <table border="1" class="dataframe">
-                        <thead>
-                        <tr style="text-align: right;">
-                            <th></th><th>total_count</th><th>fp_ratio</th><th>station_name</th><th>station_type</th>
-                        </tr><tr><th>int_itemid</th><th></th><th></th><th></th><th></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr><th>2537 </th><td> 7083948</td><td> 64.382079</td><td>          Top 40 Songs</td><td> s</td>
-                        </tr><tr><th>13163</th><td>  907978</td><td> 57.337072</td><td> Brand New &amp; Brilliant</td><td> s</td>
-                        </tr><tr><th>43840</th><td>  607654</td><td> 54.371896</td><td>           Summer Hits</td><td> s</td>
-                        </tr><tr><th>20083</th><td>  599712</td><td> 58.354010</td><td>       Brand New Dance</td><td> s</td>
-                        </tr><tr><th>26872</th><td>    1379</td><td> 46.627991</td><td>        Star of Reggae</td><td> a</td>
-                        </tr><tr><th>47538</th><td>    1384</td><td> 50.505780</td><td>                K Koke</td><td> a</td>
-                        </tr><tr><th>65995</th><td>    1387</td><td> 74.981975</td><td>              Daughter</td><td> a</td>
-                        </tr><tr><th>3497 </th><td>    1388</td><td> 61.455331</td><td>            Paul Simon</td><td> a</td>
-                        </tr><tr><th>30259</th><td>    1388</td><td> 45.461095</td><td>                N.W.A.</td><td> a</td>
-                        </tr>
-                        </tbody>
-                    </table>
-
-                    <img src="images/StationsSessionCoveredByTopn.png" height="100%" width="100%">
-                </td>
-            </tr>
-        </table>
     </section>
 
     <section class="slide">
-        <h2> Neighborhood methods </h2>
+        <h2> Neighbourhood methods </h2>
 
           <h3> Simplifying assumptions </h3>
           <ul>
               <li> Only consider similarities between pair of items $i$ and $j$ </li>
-              <li> Prediction for user $u$ from the mixture of items previously interacted $R(u)$ </li>
-              $$\sum_j 1\!\!1_{ j \in R(u) } S_{j,i}$$
+              <li> A user defined by the mixture of items previously interacted </li>
           </ul>
 
-          <h3> How to calculate similarities $S_{i,j}$? </h3>
+          <h3> Estimating similarities $S_{i,j}$ between stations </h3>
           <ul>
               <li> Number of co-occurences : $S_{i,j} = | i \cap j | $</li>
-              <li> Normalized by $i$ and $j$ popularities : $S_{i,j} = \frac{| i \cap j |}{|i| |j|} $</li>
-              <li> $| i \cap j | = \sum_u R_{u,i} R_{u,j} = \langle R_{\cdot,i}, R_{\cdot,j} \rangle $ </li>
+              <li> Or any other measures... </li>
+          </ul>
 
+          <h3> Predictions for user $u$ </h3>
+          <ul>
+              <li> Given $R(u)$ the set of items previously interacted </li>
+              <li> $R_{u,i} = \sum_j 1\!\!1_{ j \in R(u) } S_{j,i}$ </li>
+              
           </ul>
 
     </section>
 
     <section class="slide">
-          <h2> Neighbourhood methods </h2>
+          <h2> The co-occurences matrix </h2>
 
+          <h3> $$| i \cap j | = \sum_u R_{u,i} R_{u,j} = \langle R_{\cdot,i}, R_{\cdot,j} \rangle $$ </h3>
+          
           <table>
               <tr>
-                  <td style="width:800px" align="left">
+                  <td style="width:800px; vertical-align:middle" align="left">
 
                       <table id="ui" border="1" class="dataframe">
                           <thead>
@@ -272,8 +249,8 @@
 
                   </td>
 
-                  <td style="width:800px" align="right">
-
+                  <td style="width:100px"/>
+                  <td style="width:800px; vertical-align:middle" align="right">
 
                       <style>
                           .coocurences tbody tr:nth-child(1) td:nth-child(2) { background-color: #000000; }
@@ -377,29 +354,35 @@
     </section>
 
     <section class="slide">
-        <h2> Neighborhood methods </h2>
+        <h2> Fighting the popularity </h2>
 
+        <h3> 100 stations represent 80% of the traffic </h3>
         <table>
             <tr>
-              <td style="width:800px">
-                  <h3> Simplifying assumptions </h3>
-                  <ul>
-                      <li> Only consider similarities between pair of items $i$ and $j$ </li>
-                      <li> Prediction for user $u$ from the mixture of items previously interacted $R(u)$ </li>
-                      $$\sum_j 1\!\!1_{ j \in R(u) } S_{j,i}$$
-                  </ul>
+              <td style="width:800px" align="center">
 
-                  <h3> How to calculate similarities $S_{i,j}$? </h3>
-                  <ul>
-                      <li> Number of co-occurences : $S_{i,j} = | i \cap j | $</li>
-                      <li> Normalized by $i$ and $j$ popularities : $S_{i,j} = \frac{| i \cap j |}{|i| |j|} $</li>
-                      <li> $| i \cap j | = \sum_u R_{u,i} R_{u,j} = \langle R_{\cdot,i}, R_{\cdot,j} \rangle $ </li>
-                      
-                  </ul>
+                  <table border="1" class="dataframe">
+                        <thead>
+                        <tr style="text-align: right;">
+                            <th></th><th>total_count</th><th>fp_ratio</th><th>station_name</th><th>station_type</th>
+                        </tr><tr><th>int_itemid</th><th></th><th></th><th></th><th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr><th>2537 </th><td> 7083948</td><td> 64.382079</td><td>          Top 40 Songs</td><td> s</td>
+                        </tr><tr><th>13163</th><td>  907978</td><td> 57.337072</td><td> Brand New &amp; Brilliant</td><td> s</td>
+                        </tr><tr><th>43840</th><td>  607654</td><td> 54.371896</td><td>           Summer Hits</td><td> s</td>
+                        </tr><tr><th>20083</th><td>  599712</td><td> 58.354010</td><td>       Brand New Dance</td><td> s</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <img src="images/StationsSessionCoveredByTopn.png" height="100%" width="100%">
 
               </td>
 
-                <td style="width:800px" align="center">
+                <td style="width:800px; vertical-align:middle" align="center">
+                    <h3> $S_{i,j} = \frac{| i \cap j |}{|i| |j|} $</h3>
 
                     <style>
                         .lift tbody tr:nth-child(1) td:nth-child(2) { background-color: #000000; }
