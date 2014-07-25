@@ -398,23 +398,38 @@
 
     <section class="slide">
       <h2> Off-line parameters tuning  </h2>
-          <h3> Separating the signal from the noise </h3>
-          <ul>
-              <li> users/items with respectively too few items/users </li>
-              <li> interactions with to low consumption </li>
-              <li> similarities with to few co-occurrences </li>
-          </ul>
-          <h3> Optimized on a test data set </h3>
-          <ul>
-              <li> Matching our predictions against a virtual future </li>
-              <li> Measuring accuracy and diversity </li>
-          </ul>
+                  <h3> Separating the signal from the noise </h3>
+                  <ul>
+                      <li> users/items with respectively too few items/users </li>
+                      <li> interactions with to low consumption </li>
+                      <li> similarities with to few co-occurrences </li>
+                  </ul>
+
+        <table>
+            <tr>
+              <td style="width:600px">
+                  <h3> Optimized on a test data set </h3>
+                  <ul>
+                      <li> Predictions versus virtual future </li>
+                      <li> Measuring accuracy and diversity </li>
+                           $ \textit{Recall} = \frac{|hit|}{|test|} $
+
+                           $ \textit{Precision} = \frac{|hits|}{|rec|}$
+                  </ul>
+               </td>
+              <td style="width:1200px" align="center">
+                    <img src="images/OffLineEvaluation.png" height="100%" width="100%">
+              </td>
+            </tr>
+        </table>
+
           <h3> Off-line accuracy driven by :</h3>
           <ul>
-              <li> strong popularity/exposition bias $\Rightarrow$ Pop-discounted recall where $w_i = 1 ^{- p_i}$ </li>
               <li> recurrent consumption of items $\Rightarrow$ Remove already seen items from test set </li>
+              <li> strong popularity/exposition bias $\Rightarrow$ Pop-discounted recall where $w_i = 1 ^{- p_i}$ </li>
               <li> <u> user discovery effect </u> $\Rightarrow$ Component we are interested in </li>
           </ul>
+
     </section>
 
     <section class="slide">
